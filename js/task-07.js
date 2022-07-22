@@ -9,7 +9,9 @@
 
 const inputRef = document.querySelector("input#font-size-control");
 const outputRef = document.querySelector("#text");
-
+// -----------незнаю чи це потрібно але змінив початкове значення тексту щоб розмір не скакав на старті
+outputRef.style.fontSize = inputRef.value + "px";
+// -------------------------------
 const resizeOutputHandler = e => {
 	outputRef.style.fontSize = `${e.target.value}px`;
 };

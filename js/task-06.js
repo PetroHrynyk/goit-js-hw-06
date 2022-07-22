@@ -18,7 +18,6 @@ const inputRef = document.querySelector("#validation-input");
 inputRef.addEventListener("blur", validationHandler);
 
 function validationHandler(event) {
-	console.log(event);
 	if (event.target.value.length === Number(inputRef.dataset.length)) {
 		inputRef.classList.remove(`invalid`);
 		inputRef.classList.add(`valid`);
