@@ -1,6 +1,6 @@
-// function getRandomHexColor() {
-// 	return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-// }
+function getRandomHexColor() {
+	return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
 // Напиши скрипт створення і очищення колекції елементів.
 // Користувач вводить кількість елементів в input і натискає кнопку
 // Створити, після чого рендериться колекція.Натисненням на кнопку
@@ -25,28 +25,34 @@
 
 // function getRandomHexColor() {
 // 	return `#${Math.floor(Math.random() * 16777215)
-// 		.toString(16)
+// 		.toString(16)`
 // 		.padStart(6, 0)}`;
 // }
-// const refs = {
-// 	create: document.querySelector("button[data-create]"),
-// 	destroy: document.querySelector("button[data-destroy]"),
-// 	div: document.querySelector("#boxes"),
-// 	// input:
-// };
-// let amount = 5;
-// function createBoxes(amount) {
-// 	let size = 30;
-// 	const boxesToPush = [];
-// 	for (let i = 0; i < amount; i++) {
-// 		const box = document.createElement("div");
-// 		box.style.height = `${size}px`;
-// 		box.style.width = `${size}px`;
-// 		box.style.background = getRandomHexColor();
-// 		size += 10;
-// 		boxesToPush.push(box);
-// 	}
-// 	refs.div.insertAdjacentHTML("beforeend", ...boxesToPush);
-// }
-// console.log(createBoxes(5));
+const refs = {
+	create: document.querySelector("button[data-create]"),
+	destroy: document.querySelector("button[data-destroy]"),
+	boxes: document.querySelector("#boxes"),
+	input: document.querySelector("#controls").firstElementChild,
+};
+let amount;
+refs.input.addEventListener("input", e => {
+	amount = e.target.value;
+});
+refs.create.addEventListener("click", () => createBoxes(amount));
+refs.destroy.addEventListener("click", () => {
+	refs.boxes.textContent = "";
+});
+
+function createBoxes(amount) {
+	let size = 30;
+	// const boxesToPush = [];
+	for (let i = 0; i < amount; i++, size += 10) {
+		const box = document.createElement("div");
+		box.style.height = `${size}px`;
+		box.style.width = `${size}px`;
+		box.style.background = getRandomHexColor();
+		refs.boxes.append(box);
+	}
+}
+
 // not ready yet...................................
