@@ -9,5 +9,8 @@
 const inputRef = document.querySelector("#name-input");
 const outputRef = document.querySelector("#name-output");
 inputRef.addEventListener("input", event => {
-	outputRef.textContent = event.currentTarget.value;
+	if (inputRef.value === "") {
+		return (outputRef.textContent = "Anonymous");
+	}
+	return (outputRef.textContent = event.currentTarget.value);
 });
